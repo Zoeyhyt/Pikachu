@@ -1,0 +1,85 @@
+*{margin: 0;padding: 0;box-sizing: border-box;}
+body{
+    height: 100vh;
+    border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: #FFE600;
+}
+.wrapper{
+    width: 100%;
+    height: 165px;
+    position: relative;
+}
+.nose{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color:black transparent transparent transparent;
+    border-width: 12px;
+    border-radius: 11px;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    margin-left: -12px;  
+}
+.eye{
+    width: 49px;
+    height: 49px;
+    background: #2E2E2E;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #000000;
+}
+.eye.left{
+    right: 50%;
+    margin-right: 90px;
+}
+.eye.left::after{
+    content: '';
+    display: block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    background: white;
+    position: absolute;
+    left: 5px;
+    top: -1px;
+}
+.eye.right{
+    left: 50%;
+    margin-left: 90px;
+}
+.eye.right::after{
+    content: '';
+    display: block;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    left: 7px;
+    border: 2px solid #000000;
+    top: -1px;
+}
+.face{
+    width: 68px;
+    height: 68px;
+    background: #FF0000;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    top:85px;
+}
+.face.left{
+    right: 50%;
+    margin-right: 120px;
+    
+}
+.face.right{
+    left: 50%;
+    margin-left: 120px;
+}
