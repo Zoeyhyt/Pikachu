@@ -1,25 +1,47 @@
 !function(){
+    var duration = 50
     function writeCode(prefix,code,fn){
         let container = document.querySelector('#code')
         let styleTag = document.querySelector('#styleTag')
         let n = 0
-        let id = setInterval(() =>{
+        setTimeout(function run(duration){
             n+=1
             container.innerHTML = prefix + code.substring(0,n)
             styleTag.innerHTML = prefix + code.substring(0,n)
             container.scrollTop = container.scrollHeight
-            if(n >= code.length){
-                window.clearInterval(id)
+            if(n < code.length){
+                setTimeout(run,20)
+            }else{
                 fn && fn.call()
             }
-        },20)
+        },duration)
     }
+
+    $('.actions').on('click','button',function(e){
+        let $button = $(e.currentTarget)
+        let $speed = $button.attr('data-speed')
+        $button.addClass('active')
+        .siblings('.active').removeClass('active')
+        switch($speed){
+            case 'slow':
+                duration = 100
+                break
+            case 'normal':
+                duration = 50
+                break
+            case 'fast':
+                duration = 20
+                break
+        }
+    })
+
     let code = `
     /*
-    *首先，来一张皮卡丘的脸
+    *大家好，今天来给大家画一只皮卡丘
+    *
+    *首先，画一张皮卡丘的脸
     */
     .preview{
-        border:1px solid green;
         height: 100%;
         display: flex;
         justify-content: center;
@@ -176,4 +198,5 @@
     */
     `
     writeCode('',code)
+    
 }.call()
